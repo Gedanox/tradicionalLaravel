@@ -1,0 +1,34 @@
+@extends('app.base')
+
+@section('content')
+<div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            The type has not been saved, please correct the errors.
+        </div>
+        @error('store')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    @endif
+    <form action="{{ url('tipo') }}" method="post">
+        @csrf
+        <div class="form-group">
+            <label for="tipo">New product type</label>
+            <input value="{{ old('tipo') }}" required type="text" minlength="2" maxlength="100" class="form-control" id="tipo" name="tipo" placeholder="New type name">
+            @error('tipo')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Type description</label>
+            <input value="{{ old('descripcion') }}" type="text"  class="form-control" id="descripcion" name="descripcion" placeholder="Type description">
+            @error('descripcion')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <button type="submit" class="btn btn-primary">add</button>
+        &nbsp;
+        <a href="{{ url('tipo') }}" class="btn btn-primary">back</a>
+    </form>
+</div>
+@endsection
