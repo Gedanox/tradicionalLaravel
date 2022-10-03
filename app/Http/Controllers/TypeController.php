@@ -11,7 +11,7 @@ class TypeController extends Controller
 {
     function __construct() {
         //$this-> middleware('logged', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
-        $this-> middleware('logged', ['except' => ['index', 'show']]);        
+        $this-> middleware('logged', ['except' => ['']]);        
     }
 
     /**
